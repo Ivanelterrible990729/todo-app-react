@@ -6,7 +6,7 @@ export default function Footer() {
     return (
         <>
             <footer className="py-5 px-10 bg-gray-700 text-center text-white">
-                <span className="flex text-lg">
+                <span className="flex text-sm">
                     <span>
                         Developed by
                     </span>

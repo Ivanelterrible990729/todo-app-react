@@ -10,7 +10,7 @@ export default function Header() {
                 <div className='flex flex-row items-center justify-between'>
                     <div className='w-min-full flex flex-row items-center'>
                         <FaCheckSquare className='animate-pulse h-8 w-8 mr-2' />
-                        <span className='text-2xl font-medium'>
+                        <span className='text-lg font-medium'>
                             To-Do App with React!
                         </span>
                     </div>
