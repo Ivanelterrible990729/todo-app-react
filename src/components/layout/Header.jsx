@@ -19,7 +19,7 @@ export default function Header() {
 
                         <div className="flex flex-row items-center">
                             <FaGithub className="w-12 h-6" />
-                            <a href="https://github.com/Ivanelterrible990729" target="_blank" className="underline text-blue-500 hover:text-blue-300">Ivanelterrible990729</a>
+                            <a href="https://github.com/Ivanelterrible990729" target="_blank" className="underline text-blue-300 hover:text-blue-500">Ivanelterrible990729</a>
                         </div>
                     </span>
                 </div>
