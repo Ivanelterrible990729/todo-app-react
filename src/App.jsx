@@ -1,18 +1,17 @@
 import { useState } from 'react'
 
-import Footer from './components/layout/Footer';
 import Header from './components/layout/Header';
+import Home from './pages/Home';
 
 function App() {
-const [count, setCount] = useState(0);
+	const [count, setCount] = useState(0);
 
-return (
+	return (
 		<div className='min-h-screen bg-gray-100 flex flex-col'>
 			<Header />
 			<main className='flex-1 container mx-auto p-4'>
-				Hello World!
+				<Home />
 			</main>
-			<Footer />
 		</div>
 	);
 }
