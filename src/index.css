@@ -33,7 +33,7 @@ TASK ELEMENTS ----------------------------------
 */
 
 .card {
-    @apply border border-slate-300 rounded shadow-lg p-5;
+    @apply border border-slate-300 bg-white hover:bg-[#EDF2EF] rounded-lg shadow p-5;
 }
 
 /*
