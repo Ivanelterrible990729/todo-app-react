@@ -33,13 +33,29 @@ TASK ELEMENTS ----------------------------------
 */
 
 .card {
-    @apply border border-slate-300 bg-white hover:bg-[#EDF2EF] rounded-lg shadow p-5;
+    @apply border border-slate-300 bg-white rounded-lg shadow p-5;
 }
 
 /*
 TEXT ---------------------------------
 */
 
+.text-primary {
+    @apply text-blue-700;
+}
+
+.text-warning {
+    @apply text-yellow-500;
+}
+
 .text-danger {
     @apply text-red-600;
+}
+
+/*
+BACKGROUND -----------------------------
+*/
+
+.bg-primary {
+    @apply bg-blue-700;
 }
