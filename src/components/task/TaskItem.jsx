@@ -1,16 +1,25 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { FaCalendar, FaEllipsisV, FaPen, FaStopwatch, FaTrash } from "react-icons/fa";
 
-export default function TaskItem() {
+export default function TaskItem({id, isChecked, data, onToggle}) {
     return (
         <>
             <div className="card">
                 <div className="flex flex-row items-center justify-between">
                     <div className="flex items-center">
-                        <input id="checkbox" type="checkbox" className="h-5 w-5 cursor-pointer mr-2" />
-                        <label htmlFor="checkbox" className="text-xl font-medium cursor-pointer select-none">
-                            <span className="text-danger text-xl font-bold mx-2">!</span>
-                            Task 1
+                        <input
+                            id={'check-' + id}
+                            type="checkbox"
+                            checked={isChecked}
+                            onChange={onToggle}
+                            className="h-5 w-5 cursor-pointer mr-2"
+                        />
+
+                        <label htmlFor={'check-' + id}  className="text-xl font-medium cursor-pointer select-none">
+                            { data.important && <span className="text-danger text-xl font-bold mx-2">!</span> }
+                            <span className={isChecked ? 'line-through' : ''}>
+                                {data.title}
+                            </span>
                         </label>
 
                         {/* <span className="flex items-center text-sm border-l ml-5 pl-5 space-x-2">
@@ -45,13 +54,13 @@ export default function TaskItem() {
 
                 <div className="flex items-center text-gray-500 my-2">
                     <FaCalendar className="h-4 mr-2"/>
-                    <span>26/05/2025</span>
+                    <span>{data.date.toLocaleDateString()}</span>
                     <FaStopwatch className="h-4 mx-2"/>
-                    <span>09:00 am</span>
+                    <span>{data.time}</span>
                 </div>
 
                 <p className="truncate text-gray-500 text-sm mt-5">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus ratione adipisci vero quibusdam tempora sint nostrum assumenda nesciunt recusandae a? Accusantium harum autem ipsum rerum itaque, atque odit sequi corrupti.
+                    {data.description}
                 </p>
             </div>
         </>
