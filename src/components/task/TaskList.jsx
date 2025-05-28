@@ -1,10 +1,23 @@
 import TaskItem from "./TaskItem"
 
-export default function TaskList({tasks, toggleTaskChecked}) {
+export default function TaskList({tasks, toggleTaskChecked, handleDeleteTask, setTaskToEdit}) {
 
-    const listTasks = tasks.map(task =>
+    const sortedTasks = [...tasks].sort((a, b) => {
+        const dateA = new Date(a.data.date);
+        const dateB = new Date(b.data.date);
+        return dateA - dateB; // ascendente
+    });
+    
+    const listTasks = sortedTasks.map(task =>
         <div key={task.id}>
-            <TaskItem id={task.id} isChecked={task.isChecked} data={task.data} onToggle={() => toggleTaskChecked(task.id)} />
+            <TaskItem
+                id={task.id}
+                isChecked={task.isChecked}
+                data={task.data}
+                onToggle={() => toggleTaskChecked(task.id)}
+                onDelete={() => handleDeleteTask(task.id)}
+                onEdit={() => setTaskToEdit(task)}
+            />
         </div>
     );
 
