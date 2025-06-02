@@ -1,5 +1,6 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { FaCalendar, FaEllipsisV, FaPen, FaStopwatch, FaTrash } from "react-icons/fa";
+import { categories } from "../../data/categories";
 
 export default function TaskItem({id, isChecked, data, onToggle, onDelete, onEdit}) {
     return (
@@ -22,11 +23,11 @@ export default function TaskItem({id, isChecked, data, onToggle, onDelete, onEdi
                             </span>
                         </label>
 
-                        {/* <span className="flex items-center text-sm border-l ml-5 pl-5 space-x-2">
-                            <span className="rounded-lg bg-amber-300 text-yellow-700 px-2 py-1">Category 1</span>
-                            <span className="rounded-lg bg-green-300 text-green-700 px-2 py-1">Category 2</span>
-                            <span className="rounded-lg bg-purple-300 text-purple-700 px-2 py-1">Category 3</span>
-                        </span> */}
+                        <span className="flex items-center text-sm border-l ml-5 pl-5 space-x-2">
+                            <span className={'rounded-lg px-2 py-1 ' + categories[data.categoryId].color}>
+                                {categories[data.categoryId].name}
+                            </span>
+                        </span>
                     </div>
 
                     <div className="flex items-center">

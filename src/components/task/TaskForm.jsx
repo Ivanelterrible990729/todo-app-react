@@ -1,6 +1,7 @@
-import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
+import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react';
 import { useEffect, useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
+import { categories} from '../../data/categories';
 
 export default function TaskForm({onCreate, onEdit, taskToEdit, setTaskToEdit}) {
 
@@ -11,11 +12,17 @@ export default function TaskForm({onCreate, onEdit, taskToEdit, setTaskToEdit}) 
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
     const [important, setImportant] = useState(false);
+    const [categoryId, setCategoryId] = useState('0');
+
+    const categoriesOptions = categories.map(category => 
+        <option key={category.id} value={category.id}>{category.name}</option>
+    );
 
     useEffect(() => {
         if (taskToEdit) {
             setTitle(taskToEdit.data.title);
             setDescription(taskToEdit.data.description);
+            setCategoryId(taskToEdit.data.categoryId);
             setDate(taskToEdit.data.date.toISOString().split("T")[0]);
             setTime(taskToEdit.data.time);
             setImportant(taskToEdit.data.important);
@@ -29,6 +36,7 @@ export default function TaskForm({onCreate, onEdit, taskToEdit, setTaskToEdit}) 
         const newData = {
             title,
             description,
+            categoryId,
             date: new Date(date + 'T00:00:00'),
             time: time || null,
             important
@@ -54,6 +62,7 @@ export default function TaskForm({onCreate, onEdit, taskToEdit, setTaskToEdit}) 
 
         setTitle('');
         setDescription('');
+        setCategoryId('1');
         setDate('');
         setTime('');
         setImportant(false);
@@ -126,6 +135,22 @@ export default function TaskForm({onCreate, onEdit, taskToEdit, setTaskToEdit}) 
                                                     onChange={(e) => setDescription(e.target.value)}
                                                 >
                                                 </textarea>
+                                            </div>
+
+                                            <div className='mb-3'>
+                                            <label htmlFor="form-description">
+                                                    Category
+                                                    <span className='text-danger'>*</span>
+                                                </label>
+
+                                                <select
+                                                    id="form-category"
+                                                    className='border border-slate-300 rounded w-full px-2 py-1 my-2'
+                                                    value={categoryId}
+                                                    onChange={(e) => setCategoryId(e.target.value)}
+                                                >
+                                                    { categoriesOptions }
+                                                </select>
                                             </div>
 
                                             <div className='grid grid-cols-12 gap-4 mb-3'>
