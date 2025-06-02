@@ -37,7 +37,7 @@ export default function TaskForm({onCreate, onEdit, taskToEdit, setTaskToEdit}) 
             title,
             description,
             categoryId,
-            date: new Date(date + 'T00:00:00'),
+            date: new Date(date + 'T' + (time || '00:00:00')),
             time: time || null,
             important
         }
@@ -62,7 +62,7 @@ export default function TaskForm({onCreate, onEdit, taskToEdit, setTaskToEdit}) 
 
         setTitle('');
         setDescription('');
-        setCategoryId('1');
+        setCategoryId('0');
         setDate('');
         setTime('');
         setImportant(false);
